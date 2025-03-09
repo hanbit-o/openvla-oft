@@ -209,6 +209,7 @@ def make_dataset_from_rlds(
         full_dataset = dl.DLataset.from_rlds(
             builder, split="all", shuffle=False, num_parallel_reads=num_parallel_reads
         ).traj_map(restructure, num_parallel_calls)
+
         # tries to load from cache, otherwise computes on the fly
         dataset_statistics = get_dataset_statistics(
             full_dataset,

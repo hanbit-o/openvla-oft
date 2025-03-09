@@ -31,7 +31,7 @@ LIBERO_CONSTANTS = {
 }
 
 ALOHA_CONSTANTS = {
-    "NUM_ACTIONS_CHUNK": 25,
+    "NUM_ACTIONS_CHUNK": 25, # when robot control frequency 25hz; general, 1 second-long action chunks are a good default.
     "ACTION_DIM": 14,
     "PROPRIO_DIM": 14,
     "ACTION_PROPRIO_NORMALIZATION_TYPE": NormalizationType.BOUNDS,

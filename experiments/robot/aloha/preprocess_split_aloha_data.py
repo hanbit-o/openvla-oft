@@ -42,6 +42,12 @@ Example usage:
         --dataset_path /scr/moojink/data/aloha1_raw/put_yellow_corn_into_pot/ \
         --out_base_dir /scr/moojink/data/aloha1_preprocessed/ \
         --percent_val 0.05
+mine usage:
+    # "fold_tower" task
+    python experiments/robot/aloha/preprocess_split_aloha_data.py \
+        --dataset_path ~/code/openvla-oft/data/aloha1_raw/fold_tower/ \
+        --out_base_dir ~/code/openvla-oft/data/aloha1_preprocessed/ \
+        --percent_val 0.05
 """
 
 import argparse

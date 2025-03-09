@@ -20,5 +20,6 @@ pip install -e .
 #   =>> If you run into difficulty, try `pip cache remove flash_attn` first
 pip install packaging ninja
 ninja --version; echo $?  # Verify Ninja --> should return exit code "0"
+conda install cuda -c nvidia # (ADD: OH Hanbit) need for conda nvcc
 pip install "flash-attn==2.5.5" --no-build-isolation
 ```

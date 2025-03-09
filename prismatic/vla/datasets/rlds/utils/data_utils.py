@@ -215,6 +215,7 @@ def get_dataset_statistics(
             ),
         }
     )
+    
 
     cardinality = dataset.cardinality().numpy()
     if cardinality == tf.data.INFINITE_CARDINALITY:
@@ -222,6 +223,9 @@ def get_dataset_statistics(
 
     overwatch.info("Computing dataset statistics. This may take a bit, but should only need to happen once.")
     actions, proprios, num_transitions, num_trajectories = [], [], 0, 0
+    # import ipdb; ipdb.set_trace()
+    # dataset.ignore_errors()
+    # dataset = dataset.apply(tf.data.experimental.ignore_errors())
     for traj in tqdm(dataset.iterator(), total=cardinality if cardinality != tf.data.UNKNOWN_CARDINALITY else None):
         actions.append(traj["action"])
         proprios.append(traj["proprio"])

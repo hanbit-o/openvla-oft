@@ -214,6 +214,9 @@ OXE_NAMED_MIXTURES: Dict[str, List[Tuple[str, float]]] = {
     ],
 
     # === ALOHA Fine-Tuning Datasets ===
+    "aloha1_fold_tower_20_demos": [
+        ("aloha1_fold_tower_20_demos", 1.0),
+    ],
     "aloha1_fold_shorts_20_demos": [
         ("aloha1_fold_shorts_20_demos", 1.0),
     ],
