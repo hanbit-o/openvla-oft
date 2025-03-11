@@ -103,6 +103,7 @@ def setup_logging(cfg: GenerateConfig):
 
 def log_message(message: str, log_file=None):
     """Log a message to console and optionally to a log file."""
+    print(message)
     logger.info(message)
     if log_file:
         log_file.write(message + "\n")
@@ -112,7 +113,7 @@ def log_message(message: str, log_file=None):
 def get_server_endpoint(cfg: GenerateConfig):
     """Get the server endpoint for remote inference."""
     ip_address = socket.gethostbyname(cfg.vla_server_url)
-    return f"http://{ip_address}:8777/act"
+    return f"http://{ip_address}:8666/act"
 
 
 def prepare_observation(obs, resize_size):
@@ -175,7 +176,7 @@ def run_episode(
 
     episode_start_time = time.time()
     total_model_query_time = 0.0
-
+    print(cfg)
     try:
         while t < cfg.max_steps:
             # Get step start time (used to compute how much to sleep between steps)
@@ -183,6 +184,7 @@ def run_episode(
 
             # Get observation
             obs = env.get_observation(t=t)
+            # import ipdb; ipdb.set_trace()
 
             # Save raw high camera image for replay video
             replay_images.append(obs.observation["images"]["cam_high"])

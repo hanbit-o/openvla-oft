@@ -113,7 +113,7 @@ class DeployConfig:
 
     # Server Configuration
     host: str = "0.0.0.0"                                               # Host IP Address
-    port: int = 8777                                                    # Host Port
+    port: int = 8666                                                    # Host Port
 
     #################################################################################################################
     # Model-specific parameters

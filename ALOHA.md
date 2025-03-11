@@ -98,13 +98,17 @@ On the machine that you will use to command the robot, set up a second lightweig
 
 ```bash
 # Create and activate client conda environment
-# NOTE: We set `python=3.8.10` (different from server conda env) to be compatible with ROS Noetic!
-conda create -n openvla-oft-aloha python=3.8.10 -y
+conda create -n openvla-oft-aloha python=3.10 -y
 conda activate openvla-oft-aloha
 
 # Install PyTorch
 # Use a command specific to your machine: https://pytorch.org/get-started/locally/
 pip3 install torch torchvision torchaudio
+
+# Clone openvla-oft repo and pip install to download dependencies
+git clone https://github.com/moojink/openvla-oft.git
+cd openvla-oft
+pip install -e .
 
 # Install packages needed for the ALOHA robot environment
 pip install -r experiments/robot/aloha/requirements_aloha.txt
@@ -124,6 +128,11 @@ python vla-scripts/deploy.py \
   --unnorm_key aloha1_put_X_into_pot_300_demos \
 ```
 
+- example:
+```bash
+python vla-scripts/deploy.py --pretrained_checkpoint experiments/openvla-7b+aloha1_fold_tower_20_demos+b4+lr-0.0005+lora-r32+dropout-0.0--image_aug--parallel_dec--25_acts_chunk--continuous_acts--L1_regression--3rd_person_img--left_right_wrist_imgs--proprio_state--film--100000_chkpt --use_l1_regression True --use_film True --num_images_in_input 3 --use_proprio True  --center_crop True  --num_open_loop_steps 25 --unnorm_key aloha1_fold_tower_20_demos
+```
+
 Then, run the ALOHA evaluation script. Specify the VLA server URL or IP address in the `vla_server_url` argument. Below is a sample command:
 
 ```bash
@@ -136,4 +145,13 @@ python experiments/robot/aloha/run_aloha_eval.py \
   --max_steps <MAX NUM STEPS PER ROLLOUT>
 ```
 
-If you run into any issues, please open a new GitHub issue.
+- example:
+```bash
+python experiments/robot/aloha/run_aloha_eval.py \
+  --center_crop True \
+  --num_open_loop_steps 25 \
+  --use_vla_server True \
+  --vla_server_url 0.0.0.0 \
+  --num_rollouts_planned 1 \
+  --max_steps 800
+```
