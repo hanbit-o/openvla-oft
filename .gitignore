@@ -9,3 +9,7 @@ experiments/*
 !experiments/robot/
 *.pyc
 rollouts/
+openvla_oft.egg-info/dependency_links.txt
+*.zip
+openvla_oft.egg-info/
+wandb/
